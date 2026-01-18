@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // // 创建一个Person类
+        // class Person {
+        //     // 构造器方法
+        //     constructor(name, age) {
+        //         // 构造器中的this是谁？--类的实例对象
+        //         this.name = name;
+        //         this.age = age;
+        //     }
+        //     // 一般方法
+        //     speak() {
+        //         // speak方法放在了哪里？--类的原型对象上，供实例使用
+        //         // 通过Person实例调用speak时，speak中的this就是Person实例
+        //         console.log(`我叫${this.name},我今年${this.age}岁了`);
+        //     }
+        // }
+        // // 创建一个Person的实例对象
+        // const p1 = new Person('cc', 18);
+        // const p2 = new Person('lele', 19);
+        // console.log(p1);
+        // console.log(p2);
+        // p1.speak();
+        // p2.speak();
+
+        // 继承
+        class Person {
+            // 构造器方法
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            speak() {
+                console.log(`我叫${this.name},我今年${this.age}岁了`);
+            }
+        }
+        class Student extends Person {
+            constructor(name, age, grade) {
+                super(name, age);//super用来帮助调用父级类的重复参数的，必须写在子类参数的前面
+                this.grade = grade;
+            }
+            // 重写从父类继承来的方法
+            speak() {
+                console.log(`我叫${this.name},我今年${this.age}岁了,我读的是${this.grade}年级`);
+            }
+            study() {
+                console.log('我喜欢玩游戏');
+            }
+        }
+        const s1 = new Student('小尹', 18, '大一');
+        s1.speak();
+        s1.study();
+
+        /*
+            总结：
+                1.类中的构造器不是必须写的，要对实例进行初始化操作，如添加指定属性时才写
+                2.如果A类继承了B类，且A类里面写了构造器，那么A类构造器中药调用super
+                3.类中所定义的方法，都是放在了类的原型对象上，供实例去使用
+        */
+    </script>
+</body>
+
+</html>
